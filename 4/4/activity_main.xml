@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="진료 신청"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/editText_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:hint="이름"
+        android:textSize="25sp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_korean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="한국인"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rb_forigner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="외국인"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/cb_walk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="하루 30이상 걷습니다"
+        android:textSize="20sp" />
+
+    <CheckBox
+        android:id="@+id/cb_sleep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="하루 6시간 이상 수면을 취합니다"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="진료 신청"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp" />
+</LinearLayout>
