@@ -1,0 +1,137 @@
+package com.example.test;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends AppCompatActivity {
+    String city;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        String citys[] = { "(거주지) 서울", "(거주지) 부산", "(거주지) 기타"};
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        TextView title = findViewById(R.id.title);
+        title.setTextColor(Color.GRAY);
+        EditText name = findViewById(R.id.name);
+        Spinner spinner = findViewById(R.id.spinner);
+        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.my_spinner_item, citys);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                city = citys[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        RadioButton korean = findViewById(R.id.korean);
+        RadioButton forigner = findViewById(R.id.forigner);
+        CheckBox walking = findViewById(R.id.walking);
+        CheckBox sleeping = findViewById(R.id.sleeping);
+        Button button = findViewById(R.id.button);
+        TextView status = findViewById(R.id.status);
+        button.setOnClickListener(view -> {
+            String str = "이름: " + name.getText().toString() + ", " + city;
+            if (korean.isChecked()) str += ", " + korean.getText().toString();
+            if (forigner.isChecked()) str += ", " + forigner.getText().toString();
+            if (walking.isChecked()) str += ", " + walking.getText().toString();
+            if (sleeping.isChecked()) str += ", " + sleeping.getText().toString();
+            status.setText(str);
+            status.setTextColor(Color.GRAY);
+        });
+    }
+}
+
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="진료 신청"
+        android:textSize="30sp"/>
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:hint="이름"
+        android:textSize="20sp"/>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:padding="20dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/korean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="한국인"
+            android:textSize="20sp"/>
+        <RadioButton
+            android:id="@+id/forigner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="외국인"
+            android:textSize="20sp"/>
+    </RadioGroup>
+    <CheckBox
+        android:id="@+id/walking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="하루 30이상 걷습니다"
+        android:textSize="20sp"/>
+    <CheckBox
+        android:id="@+id/sleeping"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="하루 6시간 이상 수면을 취합니다"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="진료 신청"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"/>
+</LinearLayout>
+
+
+
+-my_spinner_item
+
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#BCECEA"
+    android:padding="10dp" />
