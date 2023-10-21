@@ -1,5 +1,6 @@
 package com.example.test;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,19 +13,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 public class MainActivity extends AppCompatActivity {
     String city;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String citys[] = { "(거주지) 서울", "(거주지) 부산", "(거주지) 기타"};
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String citys[] = { "(거주지) 서울", "(거주지) 부산","(거주지) 기타" };
-        TextView textView_title = findViewById(R.id.textView_title);
-        EditText editText_name = findViewById(R.id.editText_name);
+        TextView title = findViewById(R.id.title);
+        title.setTextColor(Color.GRAY);
+        EditText name = findViewById(R.id.name);
         Spinner spinner = findViewById(R.id.spinner);
         ArrayAdapter adapter = new ArrayAdapter(this, R.layout.my_spinner_item, citys);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -37,19 +37,20 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        RadioButton radioButton_korean = findViewById(R.id.rb_korean);
-        RadioButton radioButton_forigner = findViewById(R.id.rb_forigner);
-        CheckBox cb_walk = findViewById(R.id.cb_walk);
-        CheckBox cb_sleep = findViewById(R.id.cb_sleep);
+        RadioButton korean = findViewById(R.id.korean);
+        RadioButton forigner = findViewById(R.id.forigner);
+        CheckBox walking = findViewById(R.id.walking);
+        CheckBox sleeping = findViewById(R.id.sleeping);
         Button button = findViewById(R.id.button);
-        TextView textView_status = findViewById(R.id.textView_status);
-        button.setOnClickListener(v -> {
-            String status = "이름: " + editText_name.getText().toString() + ", " + city;
-            if (radioButton_korean.isChecked()) status += ", " + radioButton_korean.getText().toString();
-            if (radioButton_forigner.isChecked()) status += ", " + radioButton_forigner.getText().toString();
-            if (cb_walk.isChecked()) status += ", " + cb_walk.getText().toString();
-            if (cb_sleep.isChecked()) status += ", " + cb_sleep.getText().toString();
-            textView_status.setText(status);
+        TextView status = findViewById(R.id.status);
+        button.setOnClickListener(view -> {
+            String str = "이름: " + name.getText().toString() + ", " + city;
+            if (korean.isChecked()) str += ", " + korean.getText().toString();
+            if (forigner.isChecked()) str += ", " + forigner.getText().toString();
+            if (walking.isChecked()) str += ", " + walking.getText().toString();
+            if (sleeping.isChecked()) str += ", " + sleeping.getText().toString();
+            status.setText(str);
+            status.setTextColor(Color.GRAY);
         });
     }
 }
