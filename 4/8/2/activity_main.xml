@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메일 수신"
+            android:textSize="20sp"/>
+        <RadioButton
+            android:id="@+id/mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="우편 수신"
+            android:textSize="20sp"/>
+    </RadioGroup>
+    <RadioGroup
+        android:id="@+id/addresses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/homeAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="자택 주소"
+            android:textSize="20sp"/>
+        <RadioButton
+            android:id="@+id/officeAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="직장 주소"
+            android:textSize="20sp"/>
+    </RadioGroup><EditText
+        android:id="@+id/emailAddress"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="메일 주소"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="제출"
+        android:textSize="20sp"/>
+</LinearLayout>
